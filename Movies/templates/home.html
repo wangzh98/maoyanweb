@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>猫眼电影TOP100</title>
+    <body bgcolor="#fcf4f0"></body>
+</head>
+<body>
+    <h1>猫眼电影TOP100-第{{ cur_page }}页</h1>
+
+    {% if movies_list %}
+    <ul>
+    {% for movie in movies_list %}
+        <li><a href="{% url 'page' movie.id %}">{{movie.title}} 评分{{movie.score}} 排名{{movie.ranking}}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No movies are available.</p>
+    {% endif %}
+
+    <a href="{% url 'home' last_page  %}">上一页</a>
+    <a href="{% url 'home' next_page  %}">下一页</a>
+
+    
+    
+</body>
+</html>
